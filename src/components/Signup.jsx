@@ -5,15 +5,18 @@ import {login} from '../store/authSlice'
 import {Button,Input,Logo} from './index'
 import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
+import { FiLoader } from "react-icons/fi";
 
 function Signup() {
     const navigate = useNavigate()
     const [error,setError] = useState("")
+    const [loading,setLoading] = useState(false)
     const dispatch = useDispatch()
     const {register,handleSubmit} = useForm()
 
 const create = async(data) =>{
     setError("")
+    setLoading(true)
     try{
        const userData = await authService.createAccount(data)
        if(userData){
@@ -24,6 +27,7 @@ const create = async(data) =>{
     }catch(error){
         setError(error.message)
     }
+    setLoading(false)
 }
 
   return (
@@ -76,7 +80,8 @@ const create = async(data) =>{
                             required: true,})}
                         />
                         <Button type="submit" className="w-1/2 bg-blue-500 text-cyan-800 border  border-cyan-900">
-                            Create Account
+                             
+                            {loading ? <FiLoader className='mx-auto text-lg'/> : "Create Account " }
                         </Button>
                     </div>
                 </form>

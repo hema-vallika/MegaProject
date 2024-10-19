@@ -5,15 +5,18 @@ import {Button,Input,Logo} from "./index"
 import { useDispatch } from 'react-redux' 
 import authService from "../appWrite/auth"
 import {useForm} from 'react-hook-form'
+import { FiLoader } from "react-icons/fi";
 
 function LoginComp() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {register,handleSubmit} = useForm()
     const [error,setError] = useState("")
+    const [loading,setLoading] = useState(false)
 
     const login = async(data) =>{
         setError("")
+        setLoading(true)
         try{
             const session = await authService.login(data)
             if (session) {
@@ -25,6 +28,7 @@ function LoginComp() {
         }catch(error){
             setError(error.message)
         }
+        setLoading(false)
     }
 
 
@@ -77,7 +81,9 @@ function LoginComp() {
                 <Button
                 type="submit"
                 className ='w-2/3  mx-auto text-white font-bold bg-blue-500 border border-cyan-900 '
-                >Sign In</Button>
+                >
+                    {loading ? <FiLoader className='mx-auto text-lg'/> : "Sign In " }
+                </Button>
             </div>
 
         </form>
