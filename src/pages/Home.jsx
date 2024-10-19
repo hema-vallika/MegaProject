@@ -20,11 +20,11 @@ function Home() {
   return userStatus ? (
     <div className="w-full py-8">
       <Container>
-        <div className=" flex flex-wrap gap-5">
+        <div className=" grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
           {post?.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
-            </div>
+            
+              <PostCard {...post} key={post.$id}/>
+            
           ))}
         </div>
       </Container>

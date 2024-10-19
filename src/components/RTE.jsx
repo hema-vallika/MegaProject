@@ -12,6 +12,7 @@ export default function({name, control,label,
           render={({field : {onChange}}) => (
             <Editor
             apiKey='pkrp4h3cy1htkrxfv878g6wq0d9izn93damjz5qv6dd3982t'
+            referrerpolicy="origin"
             initialValue='default value'
             init={
                 {branding: false,

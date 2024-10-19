@@ -19,7 +19,7 @@ function AllPosts() {
     <div className='w-full py-8'>
 
         <Container>
-            <div className='flex gap-5  flex-wrap'>
+            <div className=' grid grid-cols-2 sm:grid-cols-3'>
             {posts?.map((post) => (
                 <div key={post.$id} className='py-2 w-1/4'>
                     <PostCard {...post}/>
