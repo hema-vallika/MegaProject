@@ -1,6 +1,6 @@
 import AddPost from "./AddPost";
 import AllPosts from "./AllPosts";
-import Editpost from "./EditPost";
+import Editpost from "./Editpost";
 import Home from "./Home";
 import Login from "./Login";
 import Post from "./Post";
